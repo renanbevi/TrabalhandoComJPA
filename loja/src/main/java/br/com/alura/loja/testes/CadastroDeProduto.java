@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import br.com.alura.loja.dao.ProdutoDao;
+import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
 
@@ -18,6 +19,7 @@ public class CadastroDeProduto {
 		celular.setNome("IPHONE");
 		celular.setDescricao("11");
 		celular.setPreco(new BigDecimal("800"));
+		celular.setCategoria(Categoria.CELULARES);  // recebendo o Enum da classe Categoria que é celular
 		
 		
 		EntityManager em = JPAUtil.getEntityManager();
