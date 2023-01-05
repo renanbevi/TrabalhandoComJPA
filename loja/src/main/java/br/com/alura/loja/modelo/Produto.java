@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Produto {
 
 	@Id // informa qual é o dado primary key da tabela
-	@GeneratedValue(strategy = GenerationType.SEQUENCE) // informa como o valor é gerado
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // informa como o valor é gerado
 	private Long id;
 	private String nome;
 	private String descricao;
