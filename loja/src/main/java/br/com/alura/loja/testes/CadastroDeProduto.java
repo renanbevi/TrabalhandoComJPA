@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import br.com.alura.loja.dao.CategoriaDao;
 import br.com.alura.loja.dao.ProdutoDao;
 import br.com.alura.loja.modelo.Categoria;
 import br.com.alura.loja.modelo.Produto;
@@ -19,15 +20,17 @@ public class CadastroDeProduto {
 		celular.setNome("IPHONE");
 		celular.setDescricao("11");
 		celular.setPreco(new BigDecimal("800"));
-		celular.setCategoria(Categoria.CELULARES);  // recebendo o Enum da classe Categoria que é celular
+		Categoria celulares = new Categoria("CELULARES");
 		
-		
+			
 		EntityManager em = JPAUtil.getEntityManager();
 		
-		ProdutoDao dao = new ProdutoDao(em);
+		ProdutoDao produtoDao = new ProdutoDao(em);
+		CategoriaDao categoriaDao = new CategoriaDao(em);
 		
 		em.getTransaction().begin();//inicia a transação entitymanager
-		dao.cadastrar(celular); //método persist permite criar um objeto no banco de dados. E realizar as operações
+		categoriaDao.cadastrar(celulares);
+		produtoDao.cadastrar(celular); //método persist permite criar um objeto no banco de dados. E realizar as operações
 		em.getTransaction().commit(); //Commita a operação
 		em.close(); // Fechar a conexão
 		

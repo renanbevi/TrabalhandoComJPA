@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity // Anotação para avisar que a classe é uma entidade
@@ -23,7 +24,8 @@ public class Produto {
 	private BigDecimal preco;
 	private LocalDate dataCadastro = LocalDate.now(); // cadastrando a data local
 	
-	@Enumerated(EnumType.STRING)  //informando que o Enum da classe Categoria recebe String
+	//Obrigado a informar o relacionamento 1-1 ou 1-n ou n-1
+	@ManyToOne //muitos produtos vinculados com 1 categoria
 	private Categoria categoria;
 	
 
@@ -71,8 +73,8 @@ public class Produto {
 		return categoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setCategoria(Categoria celulares) {
+		this.categoria = celulares;
 	}
 	
 	
