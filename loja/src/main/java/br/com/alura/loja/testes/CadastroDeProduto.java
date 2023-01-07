@@ -24,9 +24,21 @@ public class CadastroDeProduto {
 		Produto p = produtoDao.buscarPorID(1l); // Consulta o banco de dados e busca o produto pelo ID
 		System.out.println(p.getPreco());
 		
-		List<Produto> todos = produtoDao.BuscarTodos();
+		List<Produto> todos = produtoDao.BuscarTodos(); //buscando por todos
 		todos.forEach(p2 -> System.out.println(p.getNome() + " " + p.getDescricao() + " " + p.getDataCadastro()+ " " + p.getPreco()));
 		
+		List<Produto> nome = produtoDao.BuscarPorNome("IPHONE"); //buscando por nome especifico
+		nome.forEach(p2 -> System.out.println(p.getNome() + " " + p.getDescricao() + " " + p.getDataCadastro()+ " " + p.getPreco()));
+		
+		List<Produto> nomeCategoria = produtoDao.BuscarPorCategoria("CELULARES"); //buscando por nome da categoria 
+		nomeCategoria.forEach(p2 -> System.out.println(p.getNome() + " " + p.getDescricao() + " " + p.getDataCadastro()+ " " + p.getPreco()));
+	
+		BigDecimal precoDoProduto = produtoDao.BuscarPrecoDoProdutoComNome("IPHONE"); //buscando por nome e trazendo somente o preço
+		System.out.println(precoDoProduto);
+	
+		List<Produto> nomeDescricao = produtoDao.BuscarDescricaoDoProdutoComNome("IPHONE"); //buscando por nome da categoria 
+		nomeDescricao.forEach(p2 -> System.out.println(p.getDescricao()));
+	
 	}
 	
 			
